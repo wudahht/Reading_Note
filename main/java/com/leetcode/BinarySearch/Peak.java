@@ -23,5 +23,25 @@ A is a mountain, as defined above.
  */
 
 public class Peak {
+    public int peakIndexInMountainArray(int[] A) {
+        int l=0, r=A.length-1, mid;
+        while(l < r){   //思考为什么不能等于
+            mid = l + (r - l)/2;
+            if(A[mid] < A[mid+1]){ //思考为什么不能等于
+                l = mid;
+            }
+            else if(A[mid-1] > A[mid]){   //思考为什么不能等于
+                r=mid;
+            }
+            else {return mid;}
+        }
+        return 0;
+    }
+
+    public static void main(String[] args) throws Exception {
+        int[] A = {0,3,5,6,4,2,1,0};
+        Peak peak = new Peak();
+        System.out.println(peak.peakIndexInMountainArray(A));
+    }
 
 }
